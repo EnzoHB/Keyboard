@@ -226,6 +226,25 @@ function numbers({ key }) {
 };
 
 
+// --------------------- "Sequence" Filter ----------------------- //
+
+// Using a closure, we keep track of keys typed so far. If the tracker
+// matches the desired, we return it.   
+
+function sequence(string) {
+    let tracker = '';
+
+    return ( { key } ) => {
+        key != string[tracker.length]?
+        tracker = '' :
+        tracker += key;
+            
+            if (string == tracker)
+                return string;
+    };
+};
+
+
 // --------------------- "Modifiers" Filters ----------------------- //
 
 // Modifiers are alt, meta, ctrl and shift. Pressing them
@@ -256,6 +275,7 @@ export default {
     remove,
     alphabet,
     numbers,
+    sequence,
     alt,
     meta,
     ctrl,
@@ -264,3 +284,5 @@ export default {
     space,
     arrows
 };
+
+/* --------------------- End ----------------------- */
